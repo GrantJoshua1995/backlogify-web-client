@@ -11,6 +11,9 @@ export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
   const getBacklog = useCallback(async () => {
     const activeBacklog = await api.getBacklog(5);
     setBacklog(activeBacklog);
+
+    const userBacklogIds = await api.getUserBacklogs(1);
+    console.log(userBacklogIds);
   }, []);
 
   useEffect(() => {

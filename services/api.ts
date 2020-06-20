@@ -9,11 +9,21 @@ class ApiClient {
       baseURL: apiUrl,
     });
   }
-  async getBacklog(id: number): Promise<GetBacklogResponse> {
-    const otpResponse = await this.client.get(`/backlogs/${id}`);
+  async getUserBacklogs(id: number): Promise<GetUserBacklogsResponse> {
+    const userBacklogsResponse = await this.client.get(`/users/${id}/backlogs/`);
 
-    return otpResponse.data;
+    return userBacklogsResponse.data;
   }
+
+  async getBacklog(id: number): Promise<GetBacklogResponse> {
+    const backlogResponse = await this.client.get(`/backlogs/${id}`);
+
+    return backlogResponse.data;
+  }
+}
+
+interface GetUserBacklogsResponse {
+  response: { id: number }[];
 }
 
 interface GetBacklogResponse {
