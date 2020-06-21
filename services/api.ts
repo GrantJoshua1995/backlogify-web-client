@@ -9,7 +9,7 @@ class ApiClient {
       baseURL: apiUrl,
     });
   }
-  async getUserBacklogs(id: number): Promise<GetUserBacklogsResponse> {
+  async getUserBacklogs(id: number): Promise<GetBacklogResponse[]> {
     const userBacklogsResponse = await this.client.get(`/users/${id}/backlogs/`);
 
     return userBacklogsResponse.data;
@@ -20,10 +20,6 @@ class ApiClient {
 
     return backlogResponse.data;
   }
-}
-
-interface GetUserBacklogsResponse {
-  response: { id: number }[];
 }
 
 interface GetBacklogResponse {
