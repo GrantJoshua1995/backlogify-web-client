@@ -23,6 +23,7 @@ class ApiClient {
 }
 
 interface GetBacklogResponse {
+  id: number;
   name: string;
   games: [];
   order: number;

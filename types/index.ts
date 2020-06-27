@@ -1,5 +1,5 @@
 export interface Backlog {
-  id?: number;
+  id: number;
   name: string;
   order: number;
   games: BacklogGame[];
