@@ -7,6 +7,8 @@ export interface MyBacklogsProps {}
 
 export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
   const [backlogs, setBacklogs] = useState<BacklogType[]>([]);
+  const [newBacklogTitle, setNewBacklogTitle] = useState<string>('Add new backlog...');
+  const [newBacklogFocus, setNewBacklogFocus] = useState<boolean>(false);
 
   const getUserBacklogs = useCallback(async () => {
     const userBacklogs = await api.getUserBacklogs(1);
@@ -14,6 +16,7 @@ export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
   }, [backlogs]);
 
   useEffect(() => {
+    document.title = 'Backlogify - My Backlogs';
     getUserBacklogs();
   }, []);
 
@@ -33,10 +36,18 @@ export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
               background: '#E5EFF5',
               marginRight: '1em',
               borderRadius: '5px',
-              opacity: '0.2',
+              opacity: newBacklogFocus ? '1' : '0.2',
+            }}
+            onFocus={() => {
+              setNewBacklogFocus(true);
+            }}
+            onBlur={() => {
+              setNewBacklogFocus(false);
             }}
           >
-            <h3>Add new backlog...</h3>
+            <h3 contentEditable='true' onChange={event => setNewBacklogTitle(event.target.value)}>
+              {newBacklogTitle}
+            </h3>
           </div>
         </div>
       )}
