@@ -12,9 +12,9 @@ export const Backlog: React.SFC<BacklogProps> = ({ backlog, id }) => {
     <div
       id={'backlog' + id}
       style={{
-        border: '1px solid black',
         height: '500px',
         width: '200px',
+        minWidth: '200px',
         background: '#E5EFF5',
         marginRight: '1em',
         borderRadius: '5px',

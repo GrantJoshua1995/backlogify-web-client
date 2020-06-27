@@ -7,7 +7,6 @@ export interface MyBacklogsProps {}
 
 export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
   const [backlogs, setBacklogs] = useState<BacklogType[]>([]);
-  const [newBacklogTitle, setNewBacklogTitle] = useState<string>('Add new backlog...');
   const [newBacklogFocus, setNewBacklogFocus] = useState<boolean>(false);
 
   const getUserBacklogs = useCallback(async () => {
@@ -38,16 +37,14 @@ export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
               borderRadius: '5px',
               opacity: newBacklogFocus ? '1' : '0.2',
             }}
-            onFocus={() => {
+            onClick={() => {
               setNewBacklogFocus(true);
             }}
             onBlur={() => {
               setNewBacklogFocus(false);
             }}
           >
-            <h3 contentEditable='true' onChange={event => setNewBacklogTitle(event.target.value)}>
-              {newBacklogTitle}
-            </h3>
+            <h3 contentEditable={newBacklogFocus ? true : false}>Add new backlog... </h3>
           </div>
         </div>
       )}
