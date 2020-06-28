@@ -5,23 +5,27 @@ export interface ParagraphProps {
   message: string;
   fontWeight?: 'bold' | 'normal';
   fontStyle?: 'italic' | 'normal';
+  textAlign?: 'center' | 'left';
 }
 
-type StyledParagraphProps = Pick<ParagraphProps, 'fontWeight' | 'fontStyle'>;
+type StyledParagraphProps = Pick<ParagraphProps, 'fontWeight' | 'fontStyle' | 'textAlign'>;
 
 const StyledParagraph = styled.p<StyledParagraphProps>`
   font-weight: ${props => props.fontWeight};
   font-style: ${props => props.fontStyle};
-  font-family: 'Lato', sans-serif;
+  text-align: ${props => props.textAlign};
+  margin: 0;
+  font-family: 'Lato', Arial;
 `;
 
 export const Paragraph: React.SFC<ParagraphProps> = ({
   message,
   fontWeight = 'normal',
   fontStyle = 'normal',
+  textAlign = 'left',
 }) => {
   return (
-    <StyledParagraph fontWeight={fontWeight} fontStyle={fontStyle}>
+    <StyledParagraph fontWeight={fontWeight} fontStyle={fontStyle} textAlign={textAlign}>
       {message}
     </StyledParagraph>
   );

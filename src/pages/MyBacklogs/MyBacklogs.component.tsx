@@ -27,25 +27,9 @@ export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
           {backlogs.map(backlog => {
             return <Backlog key={backlog.id} backlog={backlog} id={backlog.id} />;
           })}
-          <div
-            style={{
-              border: '1px solid black',
-              height: '500px',
-              width: '200px',
-              background: '#E5EFF5',
-              marginRight: '1em',
-              borderRadius: '5px',
-              opacity: newBacklogFocus ? '1' : '0.2',
-            }}
-            onClick={() => {
-              setNewBacklogFocus(true);
-            }}
-            onBlur={() => {
-              setNewBacklogFocus(false);
-            }}
-          >
-            <h3 contentEditable={newBacklogFocus ? true : false}>Add new backlog... </h3>
-          </div>
+          <a>
+            <span>Add another backlog...</span>
+          </a>
         </div>
       )}
     </div>

@@ -12,8 +12,8 @@ export const Backlog: React.SFC<BacklogProps> = ({ backlog, id }) => {
     <div
       id={'backlog' + id}
       style={{
-        height: '500px',
-        width: '200px',
+        maxHeight: '100%',
+        width: '272px',
         minWidth: '200px',
         background: '#E5EFF5',
         marginRight: '1em',
