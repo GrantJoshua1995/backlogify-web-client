@@ -20,6 +20,12 @@ class ApiClient {
 
     return backlogResponse.data;
   }
+
+  async getIgdbGames(name: string): Promise<string> {
+    const igdbGames = await this.client.get(`/igdb/games/${name}`);
+
+    return igdbGames.data;
+  }
 }
 
 interface GetBacklogResponse {

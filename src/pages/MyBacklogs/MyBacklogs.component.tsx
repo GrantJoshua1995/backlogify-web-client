@@ -11,6 +11,8 @@ export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
 
   const getUserBacklogs = useCallback(async () => {
     const userBacklogs = await api.getUserBacklogs(1);
+    const igdbGames = await api.getIgdbGames('Halo');
+    console.log(igdbGames);
     setBacklogs(userBacklogs);
   }, [backlogs]);
 
