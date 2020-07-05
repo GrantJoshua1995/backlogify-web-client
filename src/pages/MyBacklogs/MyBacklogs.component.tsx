@@ -58,7 +58,12 @@ export const MyBacklogs: React.FC<MyBacklogsProps> = () => {
       {gameList.length > 0 && (
         <ul>
           {gameList.map(game => {
-            return <li>{game.name}</li>;
+            return (
+              <>
+                {game.cover && <img src={game.cover.url} />}
+                <li>{game.name}</li>
+              </>
+            );
           })}
         </ul>
       )}
